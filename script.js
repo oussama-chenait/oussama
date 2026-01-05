@@ -166,3 +166,28 @@ window.addEventListener('scroll', () => {
         }
     }
 });
+
+// Modal Logic
+const modal = document.getElementById('contactModal');
+
+function openContactModal() {
+    modal.style.display = 'flex';
+    // Small delay to allow display to apply before opacity transition
+    setTimeout(() => {
+        modal.classList.add('show');
+    }, 10);
+}
+
+function closeContactModal() {
+    modal.classList.remove('show');
+    setTimeout(() => {
+        modal.style.display = 'none';
+    }, 300); // Wait for transition
+}
+
+// Close when clicking outside
+window.onclick = function (event) {
+    if (event.target == modal) {
+        closeContactModal();
+    }
+}
