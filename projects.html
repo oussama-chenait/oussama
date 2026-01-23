@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاريعي - أسامة شنايت</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .project-section {
+            padding-top: 100px;
+            min-height: 80vh;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tech-pill {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .placeholder-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem;
+            border: 2px dashed var(--glass-border);
+            border-radius: 20px;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">أسامة <span>(شنايت)</span></div>
+        <ul class="nav-links">
+            <li><a href="index.html#home">الرئيسية</a></li>
+            <li><a href="index.html#about">عني</a></li>
+            <li><a href="index.html#projects" class="active">مشاريعي</a></li>
+            <li><a href="index.html#skills">المهارات</a></li>
+        </ul>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+
+    <!-- Contact Modal (Needed for script.js compatibility) -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content glass-effect">
+            <span class="close-modal" onclick="closeContactModal()">&times;</span>
+            <h2 class="modal-title">اختر وسيلة التواصل</h2>
+            <div class="contact-options">
+                <a href="https://www.instagram.com/oussama_dev.rt/" target="_blank" class="contact-option insta-option">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://discord.gg/BvKdXPeX" target="_blank" class="contact-option discord-option">
+                    <i class="fab fa-discord"></i>
+                    <span>Discord</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Discord Bots Section -->
+    <section id="discord" class="project-section">
+        <div class="container">
+            <h2 class="section-title">بوتات ديسكورد</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">
+                تشكيلة من أقوى البوتات التي قمت بتطويرها لخدمة المجتمعات الرقمية بكفاءة عالية.
+            </p>
+            <div class="project-grid">
+                <!-- Jannah Hub -->
+                <div class="project-card glass-effect">
+                    <img src="assets/jannah_hub.png" alt="Jannah Hub" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Jannah Hub</h3>
+                        <p class="project-desc">
+                            نظام إدارة مجتمعات متكامل يُعيد تعريف تجربة المستخدم في ديسكورد.
+                            يوفر أدوات تحكم إدارية دقيقة، ونظام تحقق أمني متطور، وواجهة تفاعلية سلسة
+                            تضمن بيئة آمنة ومنظمة للأعضاء. إنه ليس مجرد بوت، بل هو قلب المجتمع النابض.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Node.js</span>
+                            <span class="tech-pill">Discord.js</span>
+                            <span class="tech-pill">MongoDB</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ticket Bot -->
+                <div class="project-card glass-effect">
+                    <img src="assets/ticket_bot.png" alt="Ticket System" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">Ticket System</h3>
+                        <p class="project-desc">
+                            الحل الأمثل لإدارة الدعم الفني. يتميز بنظام تذاكر ذكي يقوم بتصنيف المشكلات تلقائيًا،
+                            وإنشاء قنوات خاصة لكل حالة، مع إمكانية حفظ النصوص (Transcripts) للرجوع إليها.
+                            صُمم لرفع كفاءة فريق الدعم وضمان سرعة الاستجابة.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Node.js</span>
+                            <span class="tech-pill">HTML Transcripts</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Bot -->
+                <div class="project-card glass-effect">
+                    <img src="assets/system_bot.png" alt="System Bot" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">System Bot</h3>
+                        <p class="project-desc">
+                            العمود الفقري لأي سيرفر ناجح. يجمع بين أدوات الحماية المتقدمة، والردود التلقائية،
+                            وإدارة الرتب (Roles) في نظام واحد متناغم. يوفر استقرارًا عاليًا وأداءً فائقًا
+                            للتعامل مع الأحمال الكبيرة في السيرفرات الضخمة.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">JavaScript</span>
+                            <span class="tech-pill">Security</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FiveM Servers Section -->
+    <section id="fivem" class="project-section">
+        <div class="container">
+            <h2 class="section-title">سيرفرات FiveM</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">
+                تجارب لعب واقعية، مأخوذة من قلب الحدث.
+            </p>
+            <div class="project-grid">
+                <!-- FiveM Project 1 -->
+                <div class="project-card glass-effect">
+                    <img src="assets/fivem_car.png" alt="Custom Vehicles" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">أسطول سيارات حصري</h3>
+                        <p class="project-desc">
+                            تعديل وتطوير سيارات حصرية (Handling & Design) لتناسب أجواء السيرفر الواقعية.
+                            نظام قيادة متطور يمنح اللاعبين شعوراً فريداً بالسيطرة والسرعة.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Handling.meta</span>
+                            <span class="tech-pill">Carcols</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FiveM Project 2 -->
+                <div class="project-card glass-effect">
+                    <img src="assets/fivem_station.png" alt="Custom Mapping" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">تحسينات البيئة والخرائط</h3>
+                        <p class="project-desc">
+                            إضافة لمسات جمالية وواقعية على خريطة اللعبة، بما في ذلك محطات الوقود والمتاجر،
+                            مع ضمان أعلى معدلات إطارات (FPS Optimization) لجميع اللاعبين.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Mapping</span>
+                            <span class="tech-pill">FPS Boost</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FiveM Project 3 -->
+                <div class="project-card glass-effect">
+                    <img src="assets/fivem_interior.png" alt="Interior Design" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">تصميم الديكورات الداخلية</h3>
+                        <p class="project-desc">
+                            بناء وتخصيص مراكز الشرطة والمؤسسات الحكومية بتفاصيل دقيقة تعكس الهوية الرسمية.
+                            تصاميم تفاعلية تدعم الرول بلاي الجاد وتوفر بيئة عمل احترافية.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">MLO</span>
+                            <span class="tech-pill">Interior Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3D Design Section -->
+    <section id="3d" class="project-section">
+        <div class="container">
+            <h2 class="section-title">تصميم 3D</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">
+                فن تحويل الأفكار إلى واقع ملموس ثلاثي الأبعاد.
+            </p>
+            <div class="project-grid">
+                <!-- 3D Project 1 -->
+                <div class="project-card glass-effect">
+                    <img src="assets/3d_sunset.png" alt="Environmental Design" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">مشاهد سينمائية واضاءة</h3>
+                        <p class="project-desc">
+                            تكوين مشاهد بيئية ساحرة باستخدام تقنيات إضاءة متقدمة في Blender.
+                            التركيز على المزاج العام للمشهد (Mood) وتناسق الألوان لإنتاج لوحات فنية رقمية.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Blender</span>
+                            <span class="tech-pill">Cycles Render</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D Project 2 -->
+                <div class="project-card glass-effect">
+                    <img src="assets/3d_model.png" alt="3D Modeling" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">نمذجة الكتل والأشكال</h3>
+                        <p class="project-desc">
+                            تصميم المجسمات الهندسية والأصول (Assets) بدقة عالية.
+                            مرحلة أساسية في بناء أي مشروع ثلاثي الأبعاد، حيث يتم تحويل الأشكال البسيطة إلى عناصر معقدة.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Modeling</span>
+                            <span class="tech-pill">Topology</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3D Project 3 -->
+                <div class="project-card glass-effect">
+                    <img src="assets/3d_cape.png" alt="Cloth Simulation" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">محاكاة الفيزيائية والملابس</h3>
+                        <p class="project-desc">
+                            التعمق في تفاصيل الحركة والواقعية من خلال محاكاة الأقمشة (Cloth Simulation).
+                            ضبط خصائص المواد والجاذبية لخلق انسدال طبيعي وحركة سلسة تضفي حيوية على الشخصيات.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Physics</span>
+                            <span class="tech-pill">Cloth Sim</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Websites Section -->
+    <section id="websites" class="project-section">
+        <div class="container">
+            <h2 class="section-title">المواقع الإلكترونية</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-muted);">
+                حلول برمجية متكاملة تجمع بين جمال التصميم وقوة الأداء.
+            </p>
+            <div class="project-grid">
+                <!-- Website Project 1 -->
+                <div class="project-card glass-effect">
+                    <img src="assets/web_rasidiya.png" alt="Rasidiya Store" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">منصة رصيدية الرقمية</h3>
+                        <p class="project-desc">
+                            متجر إلكتروني متكامل لبيع الخدمات والاشتراكات الرقمية.
+                            يتميز بتجربة مستخدم سلسة ونظام دفع آمن، مع واجهة عصرية تعكس الهوية التجارية وتسهل عملية
+                            الشراء.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">E-Commerce</span>
+                            <span class="tech-pill">UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Website Project 2 -->
+                <div class="project-card glass-effect">
+                    <img src="assets/web_military.png" alt="Military System" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">نظام الهيكلة العسكرية</h3>
+                        <p class="project-desc">
+                            لوحة تحكم (Dashboard) متقدمة لإدارة التنظيم العسكري.
+                            تتيح تتبع الرتب، وإدارة الأفراد، وتنظيم البيانات في هيكلية واضحة ودقيقة لضمان سير العمليات
+                            بكفاءة.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Dashboard</span>
+                            <span class="tech-pill">Management System</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Website Project 3 -->
+                <div class="project-card glass-effect">
+                    <img src="assets/web_portfolio.png" alt="Developer Portfolio" class="project-img">
+                    <div class="project-content">
+                        <h3 class="project-title">ABDOU.DEV Portfolio</h3>
+                        <p class="project-desc">
+                            موقع شخصي يعكس هوية المطور بأسلوب "Dark Mode" أنيق.
+                            يركز على عرض المهارات والمشاريع بطريقة تفاعلية، مع بساطة في التصميم وعمق في التفاصيل.
+                        </p>
+                        <div class="tech-stack">
+                            <span class="tech-pill">Personal Branding</span>
+                            <span class="tech-pill">Dark Aesthetic</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 أسامة شنايت</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Smooth scroll to category on load
+        window.onload = function () {
+            // Re-run particles just in case
+            if (typeof initParticles === 'function') initParticles();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('category');
+            if (category) {
+                const element = document.getElementById(category);
+                if (element) {
+                    setTimeout(() => {
+                        element.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
