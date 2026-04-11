@@ -162,6 +162,49 @@ footer {
     filter: blur(50px);
 }
 
+.floating-tech {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+.floating-tech i {
+    animation: float 6s ease-in-out infinite;
+    transition: color 0.3s;
+}
+
+.floating-tech i:hover {
+    color: var(--primary-blue);
+    cursor: pointer;
+}
+
+.floating-left {
+    left: 15%;
+    top: 25%;
+}
+
+.floating-right {
+    right: 15%;
+    top: 35%;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); color: rgba(0, 212, 255, 0.4); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.icon-float-1 { animation-delay: 0s !important; }
+.icon-float-2 { animation-delay: 1s !important; }
+.icon-float-3 { animation-delay: 2s !important; }
+.icon-float-4 { animation-delay: 0.5s !important; }
+.icon-float-5 { animation-delay: 1.5s !important; }
+.icon-float-6 { animation-delay: 2.5s !important; }
+
 /* Sections */
 section {
     padding: 5rem 10%;

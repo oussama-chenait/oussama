@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2048 - Premium</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="title">2048</h1>
+            <div class="scores">
+                <div class="score-container">
+                    <div class="score-title">النتيجة</div>
+                    <div id="score">0</div>
+                    <div id="score-addition" class="score-addition"></div>
+                </div>
+                <div class="score-container">
+                    <div class="score-title">أفضل نتيجة</div>
+                    <div id="best-score">0</div>
+                </div>
+            </div>
+        </header>
+
+        <div class="controls">
+            <p class="subtitle">ادمج الأرقام المتشابهة لتصل إلى <strong>2048!</strong></p>
+            <div class="action-buttons">
+                <button id="undo-btn" class="btn btn-secondary">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+                    تراجع
+                </button>
+                <button id="new-game-btn" class="btn btn-primary">لعبة جديدة</button>
+            </div>
+        </div>
+
+        <div class="game-container" id="game-container" dir="ltr">
+            <div class="game-message" id="game-message">
+                <p id="game-message-text"></p>
+                <div class="lower">
+                    <button id="keep-playing-btn" class="btn btn-secondary" style="display: none;">أكمل اللعب</button>
+                    <button id="retry-btn" class="btn btn-primary">حاول مرة أخرى</button>
+                </div>
+            </div>
+
+            <!-- Grid background -->
+            <div class="grid-container">
+                <div class="grid-row">
+                    <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                </div>
+                <div class="grid-row">
+                    <div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div><div class="grid-cell"></div>
+                </div>
+            </div>
+
+            <!-- Dynamic tiles will be rendered here -->
+            <div class="tile-container" id="tile-container"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

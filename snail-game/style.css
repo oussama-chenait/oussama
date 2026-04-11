@@ -1,0 +1,167 @@
+:root {
+    --primary-color: #00d4ff;
+    --bg-color: #0a0a0a;
+    --snake-color: #00ff88;
+    --snake-head: #00cc66;
+    --food-color: #ff3366;
+    --gold-color: #ffd700;
+    --trick-color: #9900ff;
+    --obstacle-color: #ffea00;
+    --glass-bg: rgba(20, 20, 35, 0.8);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    touch-action: none; /* لمنع السحب الخاص بالمتصفح */
+}
+
+.game-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    padding: 1rem;
+}
+
+.hud {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+canvas {
+    background-color: #111;
+    border: 2px solid var(--primary-color);
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.2);
+    width: 90vw;
+    height: 90vw;
+    max-width: 400px;
+    max-height: 400px;
+    display: block;
+}
+
+/* شاشة الانتظار Overlay */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    background: var(--glass-bg);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.overlay h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}
+
+.overlay p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    padding: 0 20px;
+    line-height: 1.6;
+}
+
+.btn {
+    padding: 0.8rem 2.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.blue-btn {
+    background: linear-gradient(45deg, #0059ff, var(--primary-color));
+    color: white;
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.4);
+}
+
+.blue-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+}
+
+/* أزرار الموبايل */
+.mobile-controls {
+    display: none;
+    margin-top: 1.5rem;
+}
+
+/* تُظهر الأزرار فقط في الشاشات الصغيرة */
+@media (max-width: 768px) {
+    .mobile-controls {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+.d-pad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.d-middle {
+    display: flex;
+    gap: 60px;
+}
+
+.d-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    backdrop-filter: blur(5px);
+}
+
+.d-btn:active, .d-btn:hover {
+    background: rgba(0, 212, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+}

@@ -20,7 +20,8 @@
         <ul class="nav-links">
             <li><a href="#home">الرئيسية</a></li>
             <li><a href="#about">عني</a></li>
-            <li><a href="#stats">إنجازاتي</a></li>
+            <li><a href="#games">الألعاب</a></li>
+            <li><a href="#projects">مشاريعي وإنجازاتي</a></li>
             <li><a href="#skills">المهارات</a></li>
         </ul>
         <div class="burger">
@@ -41,8 +42,46 @@
         </div>
         <div class="hero-visuals">
             <div class="glowing-orb"></div>
+            <div class="floating-tech floating-left">
+                <i class="fab fa-discord icon-float-1"></i>
+                <i class="fab fa-python icon-float-2"></i>
+                <i class="fas fa-cube icon-float-3"></i>
+            </div>
+            <div class="floating-tech floating-right">
+                <i class="fas fa-code icon-float-4"></i>
+                <i class="fab fa-js icon-float-5"></i>
+                <i class="fas fa-server icon-float-6"></i>
+            </div>
         </div>
     </header>
+
+    <section id="games" class="games-section">
+        <div class="container">
+            <h2 class="section-title">الألعاب الممتعة</h2>
+            <div class="project-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                <div class="project-card glass-effect" onclick="window.location.href='./2048/index.html'" style="cursor: pointer; background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 20px; text-align: center; padding: 2rem; transition: transform 0.3s;">
+                    <i class="fas fa-gamepad" style="font-size: 4rem; color: var(--primary-blue); margin-bottom: 1rem;"></i>
+                    <h3 class="project-title" style="color: var(--primary-blue); font-size: 1.5rem; margin-bottom: 1rem;">لعبة 2048</h3>
+                    <p class="project-desc" style="color: var(--text-muted); margin-bottom: 1rem;">تحدى عقلك مع لعبة الأرقام الكلاسيكية 2048، وشاركنا نتيجتك!</p>
+                    <div class="tech-stack" style="display: flex; justify-content: center; gap: 0.5rem;">
+                        <span class="skill-tag" style="padding: 0.2rem 0.8rem; font-size: 0.8rem;">HTML/CSS</span>
+                        <span class="skill-tag" style="padding: 0.2rem 0.8rem; font-size: 0.8rem;">JavaScript</span>
+                    </div>
+                </div>
+                
+                <!-- Snail Game -->
+                <div class="project-card glass-effect" onclick="window.location.href='./snail-game/index.html'" style="cursor: pointer; background: var(--card-bg); border: 1px solid var(--glass-border); border-radius: 20px; text-align: center; padding: 2rem; transition: transform 0.3s;">
+                    <i class="fas fa-worm" style="font-size: 4rem; color: #00ff88; margin-bottom: 1rem;"></i>
+                    <h3 class="project-title" style="color: #00ff88; font-size: 1.5rem; margin-bottom: 1rem;">لعبة الثعبان</h3>
+                    <p class="project-desc" style="color: var(--text-muted); margin-bottom: 1rem;">لعبة الثعبان الكلاسيكية بمراحل متطورة (Snail Game). تحدى مهاراتك!</p>
+                    <div class="tech-stack" style="display: flex; justify-content: center; gap: 0.5rem;">
+                        <span class="skill-tag" style="padding: 0.2rem 0.8rem; font-size: 0.8rem;">JavaScript</span>
+                        <span class="skill-tag" style="padding: 0.2rem 0.8rem; font-size: 0.8rem;">Canvas 2D</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Contact Modal -->
     <div id="contactModal" class="modal">
@@ -92,13 +131,13 @@
                 <div class="stat-card glass-effect" onclick="window.location.href='projects.html?category=discord'"
                     style="cursor: pointer;">
                     <i class="fab fa-discord stat-icon"></i>
-                    <div class="stat-number" data-target="14">0</div>
+                    <div class="stat-number" data-target="21">0</div>
                     <div class="stat-label">بوتات ديسكورد</div>
                 </div>
                 <div class="stat-card glass-effect" onclick="window.location.href='projects.html?category=fivem'"
                     style="cursor: pointer;">
                     <i class="fas fa-server stat-icon"></i>
-                    <div class="stat-number" data-target="6">0</div>
+                    <div class="stat-number" data-target="7">0</div>
                     <div class="stat-label">سيرفرات FiveM</div>
                 </div>
                 <div class="stat-card glass-effect" onclick="window.location.href='projects.html?category=3d'"
@@ -110,8 +149,14 @@
                 <div class="stat-card glass-effect" onclick="window.location.href='projects.html?category=websites'"
                     style="cursor: pointer;">
                     <i class="fas fa-globe stat-icon"></i>
-                    <div class="stat-number" data-target="12">0</div>
+                    <div class="stat-number" data-target="48">0</div>
                     <div class="stat-label">المواقع</div>
+                </div>
+                <div class="stat-card glass-effect" onclick="window.location.href='#games'"
+                    style="cursor: pointer;">
+                    <i class="fas fa-gamepad stat-icon"></i>
+                    <div class="stat-number" data-target="3">0</div>
+                    <div class="stat-label">Mini Games</div>
                 </div>
             </div>
         </div>

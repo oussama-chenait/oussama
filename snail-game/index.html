@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Snail Game - لعبة الثعبان المستحيلة</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- شاشة البداية / المستويات / النهاية -->
+        <div id="overlay" class="overlay glass-effect">
+            <h1 id="overlay-title">Snail Game</h1>
+            <p id="overlay-desc">جهز نفسك لتحدي الثعبان والمراحل المختلفة! اسحب بإصبعك (Swipe) أو استخدم الأزرار.</p>
+            <button id="start-btn" class="btn blue-btn">ابدأ اللعب</button>
+        </div>
+
+        <div class="hud">
+            <div class="score">النقاط: <span id="score-val">0</span></div>
+            <div class="level">المرحلة: <span id="level-val">1</span></div>
+            <div class="goal">الهدف: <span id="goal-val">5</span></div>
+        </div>
+
+        <!-- ساحة اللعب -->
+        <canvas id="game-canvas"></canvas>
+
+        <!-- أزرار التحكم للموبايل -->
+        <div class="mobile-controls" id="mobile-controls">
+            <div class="d-pad">
+                <button class="d-btn up" id="up-btn"><i class="fas fa-chevron-up"></i></button>
+                <div class="d-middle">
+                    <button class="d-btn left" id="left-btn"><i class="fas fa-chevron-right"></i></button> <!-- RTL: Right arrow is left physically? no wait, we'll keep it standard -->
+                    <button class="d-btn right" id="right-btn"><i class="fas fa-chevron-left"></i></button>
+                </div>
+                <button class="d-btn down" id="down-btn"><i class="fas fa-chevron-down"></i></button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

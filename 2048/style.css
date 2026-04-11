@@ -1,0 +1,341 @@
+:root {
+    --bg-color: #faf8ef;
+    --text-color: #776e65;
+    --board-bg: #bbada0;
+    --cell-bg: rgba(238, 228, 218, 0.35);
+    
+    --grid-size: 4;
+    --cell-size: 100px;
+    --cell-gap: 15px;
+    
+    /* Tile colors */
+    --tile-2-bg: #eee4da;
+    --tile-2-color: #776e65;
+    --tile-4-bg: #ede0c8;
+    --tile-4-color: #776e65;
+    --tile-8-bg: #f2b179;
+    --tile-8-color: #f9f6f2;
+    --tile-16-bg: #f59563;
+    --tile-16-color: #f9f6f2;
+    --tile-32-bg: #f67c5f;
+    --tile-32-color: #f9f6f2;
+    --tile-64-bg: #f65e3b;
+    --tile-64-color: #f9f6f2;
+    --tile-128-bg: #edcf72;
+    --tile-128-box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.23), inset 0 0 0 1px rgba(255, 255, 255, 0.14);
+    --tile-128-color: #f9f6f2;
+    --tile-256-bg: #edcc61;
+    --tile-256-box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.31), inset 0 0 0 1px rgba(255, 255, 255, 0.19);
+    --tile-256-color: #f9f6f2;
+    --tile-512-bg: #edc850;
+    --tile-512-box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.24);
+    --tile-512-color: #f9f6f2;
+    --tile-1024-bg: #edc53f;
+    --tile-1024-box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.48), inset 0 0 0 1px rgba(255, 255, 255, 0.29);
+    --tile-1024-color: #f9f6f2;
+    --tile-2048-bg: #edc22e;
+    --tile-2048-box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.33);
+    --tile-2048-color: #f9f6f2;
+    
+    --tile-super-bg: #3c3a32;
+    --tile-super-color: #f9f6f2;
+}
+
+@media (max-width: 520px) {
+    :root {
+        --cell-size: 70px;
+        --cell-gap: 10px;
+    }
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Outfit', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding-top: 5vh;
+}
+
+.container {
+    width: calc(var(--grid-size) * var(--cell-size) + (var(--grid-size) + 1) * var(--cell-gap));
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0;
+    color: #776e65;
+    line-height: 1;
+}
+
+.scores {
+    display: flex;
+    gap: 10px;
+}
+
+.score-container {
+    background: #bbada0;
+    padding: 5px 25px;
+    border-radius: 6px;
+    color: white;
+    text-align: center;
+    position: relative;
+    font-weight: bold;
+    min-width: 80px;
+}
+
+.score-title {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #eee4da;
+    margin-bottom: 2px;
+}
+
+.score-container div:not(.score-title):not(.score-addition) {
+    font-size: 1.5rem;
+}
+
+.score-addition {
+    position: absolute;
+    right: 30px;
+    bottom: 5px;
+    color: rgba(119, 110, 101, 0.9);
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 0;
+    z-index: 100;
+    pointer-events: none;
+}
+
+@keyframes score-anim {
+    0% { top: 25px; opacity: 1; }
+    100% { top: -40px; opacity: 0; }
+}
+
+.score-addition.active {
+    animation: score-anim 0.8s ease-in;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: #776e65;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+.btn-primary {
+    background: #8f7a66;
+    color: #f9f6f2;
+}
+
+.btn-primary:hover {
+    background: #9f8b77;
+}
+
+.btn-secondary {
+    background: #cdc1b4;
+    color: #776e65;
+}
+
+.btn-secondary:hover {
+    background: #d4c8bd;
+}
+
+.game-container {
+    background: var(--board-bg);
+    border-radius: 8px;
+    padding: var(--cell-gap);
+    position: relative;
+    width: calc(var(--grid-size) * var(--cell-size) + (var(--grid-size) + 1) * var(--cell-gap));
+    height: calc(var(--grid-size) * var(--cell-size) + (var(--grid-size) + 1) * var(--cell-gap));
+    touch-action: none;
+}
+
+.grid-container {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--cell-gap);
+}
+
+.grid-row {
+    display: flex;
+    gap: var(--cell-gap);
+}
+
+.grid-cell {
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border-radius: 6px;
+    background: var(--cell-bg);
+}
+
+.tile-container {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.tile {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--cell-size);
+    height: var(--cell-size);
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 2.5rem;
+    transition: transform 0.15s ease-in-out;
+}
+
+/* Animations */
+@keyframes appear {
+    0% { opacity: 0; transform: scale(0); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.tile-new .tile-inner {
+    animation: appear 0.2s forwards;
+}
+
+.tile-merged .tile-inner {
+    animation: pop 0.2s forwards;
+    z-index: 10;
+}
+
+.tile-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--tile-2-bg);
+    color: var(--tile-2-color);
+}
+
+/* Base translate calculation for RTL: Note: in RTL layout the container coordinate system flips context usually, but we will handle translations explicitly via script assigning values. Wait, we can assign left and top natively. */
+
+/* Tile Colors */
+.tile[data-val="2"] .tile-inner { background: var(--tile-2-bg); color: var(--tile-2-color); }
+.tile[data-val="4"] .tile-inner { background: var(--tile-4-bg); color: var(--tile-4-color); }
+.tile[data-val="8"] .tile-inner { background: var(--tile-8-bg); color: var(--tile-8-color); }
+.tile[data-val="16"] .tile-inner { background: var(--tile-16-bg); color: var(--tile-16-color); }
+.tile[data-val="32"] .tile-inner { background: var(--tile-32-bg); color: var(--tile-32-color); }
+.tile[data-val="64"] .tile-inner { background: var(--tile-64-bg); color: var(--tile-64-color); }
+.tile[data-val="128"] .tile-inner { background: var(--tile-128-bg); color: var(--tile-128-color); box-shadow: var(--tile-128-box-shadow); font-size: 2.2rem; }
+.tile[data-val="256"] .tile-inner { background: var(--tile-256-bg); color: var(--tile-256-color); box-shadow: var(--tile-256-box-shadow); font-size: 2.2rem; }
+.tile[data-val="512"] .tile-inner { background: var(--tile-512-bg); color: var(--tile-512-color); box-shadow: var(--tile-512-box-shadow); font-size: 2.2rem; }
+.tile[data-val="1024"] .tile-inner { background: var(--tile-1024-bg); color: var(--tile-1024-color); box-shadow: var(--tile-1024-box-shadow); font-size: 1.8rem; }
+.tile[data-val="2048"] .tile-inner { background: var(--tile-2048-bg); color: var(--tile-2048-color); box-shadow: var(--tile-2048-box-shadow); font-size: 1.8rem; }
+
+/* Super Tiles */
+.tile[data-val^="40"], .tile[data-val^="81"] { background: var(--tile-super-bg); color: var(--tile-super-color); font-size: 1.5rem; }
+
+.game-message {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(238, 228, 218, 0.73);
+    z-index: 100;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    animation: fadeIn 0.5s fade-in;
+}
+
+.game-message p {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #776e65;
+    margin-bottom: 20px;
+    text-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+}
+
+.game-message.game-over,
+.game-message.game-won {
+    display: flex;
+}
+
+.game-message.game-won {
+    background: rgba(237, 194, 46, 0.5);
+}
+
+.game-message.game-won p {
+    color: #f9f6f2;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+.lower {
+    display: flex;
+    gap: 15px;
+}
